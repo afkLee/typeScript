@@ -14,6 +14,11 @@ Client Side Rendering 하면 첫페이지에 빈 HTML 가져와 JS 파일 해석
 Next.Js로 구성시 Pre-Rendering 통해 페이지 미리 렌더링 , 완성된 HTML 가져오기에 검색엔진 크롤러 에게 Rendering 된 페이지를 전달
 
 
+
+
+# TypeORM
+https://typeorm.io/
+
 # JS 와 TS 차이점
 https://choseongho93.tistory.com/319
 
