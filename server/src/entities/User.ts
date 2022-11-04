@@ -1,5 +1,5 @@
 import { BaseEntity, BeforeInsert, Column, Entity, In,Index, OneToMany } from "typeorm";
-import{IsEmail, Length} from "class-validator";
+import {IsEmail, Length} from "class-validator";
 import bcrypt from 'bcryptjs';
 
 //User 클래스가 Entity임을 나태내는 용도 
@@ -15,24 +15,25 @@ export default class User extends BaseEntity{
     //Column > Database에서 열을 나타낼때 사용함 ex) email,username 등
     //unique 는 이메일이 하나여야만 하니깐 true, 같은 이메일로 여러개 가능하다면 false
     @Column({ unique: true})
-    email: string
+    email: string;
     
 
     @Index()
     @Length(2,20,{message:"이름은 2글자 이상으로 만들어주세요"})
     @Column({unique : true})
-    username: string
+    username: string;
 
     @Exclude()
     @Column()
     @Length(6,30,{ massage : "비밀번호는 6자리 이상이여야합니다."})
-    password: string
+    password: string;
 
+    
     @OneToMany(() =>Post,(post) => post.user)
-    posts: Post[]
+    posts: Post[];
 
     @OneToMany(() =>Vote,(vote) => vote.user)
-    posts: Vote[]
+    posts: Vote[];
 
     @BeforeInsert()
     async hashPassword(){
