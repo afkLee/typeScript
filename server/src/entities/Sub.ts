@@ -1,6 +1,8 @@
 import { extname } from "path";
 import { BaseEntity, Column, Entity, Index, JoinColumn, OneToMany } from "typeorm";
 import User from "./User";
+import {Expose} from 'class-transformer';
+
 
 @Entity("subs")
 export default class Sub extends BaseEntity{

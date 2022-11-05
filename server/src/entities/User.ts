@@ -28,7 +28,7 @@ export default class User extends BaseEntity{
     @Length(6,30,{ massage : "비밀번호는 6자리 이상이여야합니다."})
     password: string;
 
-    
+
     @OneToMany(() =>Post,(post) => post.user)
     posts: Post[];
 

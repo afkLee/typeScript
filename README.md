@@ -60,7 +60,11 @@ plain object
     "age" : 25
 }
 
+
+
 class object
+
+import {Expose} from 'class-transformer';
 
 export class User{
     id: number;
@@ -68,11 +72,12 @@ export class User{
     lastname : string;
     age : number;
     
-
+    @Expose()
     getName(){
         return this.firstName + this.lastName;
     }
-
+    
+    @Expose()
     getAge(){
         return this.age;
     }
