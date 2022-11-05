@@ -47,6 +47,64 @@ table 간의 Mapping(일대일,다대다,일대다) 만듬
 간단한 CLI명령 제공
 
 
+# Class Transformer
+
+Class Transformer 사용시 plain object를 class object로 변환가능, 그 반대 또한 가능
+
+
+plain object 
+{
+    "id" : 1,
+    "firstName" : "Lee",
+    "lastName" : "EungJae",
+    "age" : 25
+}
+
+class object
+
+export class User{
+    id: number;
+    firstName : string;
+    lastname : string;
+    age : number;
+    
+
+    getName(){
+        return this.firstName + this.lastName;
+    }
+
+    getAge(){
+        return this.age;
+    }
+}
+
+class-transform 없을경우
+
+fetch('users.json').then((users: User[]) => {
+    return users.map(u => to FullName(u));
+})
+
+export function toFullName(user){
+    return `${user.firstName}${user.lastName}`
+}
+
+함수를 만들어 map method 사용하여서 구현을 해야함
+
+
+class-transform 사용할경우
+
+fetch('users.json').then((users: Object[]) => {
+    const realUsers = plainToInstance(User, users);
+
+    return realUsers.map(u => u.getName());
+})
+
+plainToInstance : class-transform 의 method , class에서 정의한 로직 이용 가능 
+
+
+왜 사용 하는가?
+
+User 클래스에서 정의한 로직 그대로 사용 / 상태와 행위가 함께 이루어지는 코드
 
 
 # JS 와 TS 차이점
