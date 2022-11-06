@@ -112,6 +112,19 @@ plainToInstance : class-transform 의 method , class에서 정의한 로직 이�
 User 클래스에서 정의한 로직 그대로 사용 / 상태와 행위가 함께 이루어지는 코드
 
 
+# == 이랑 ===의 차이
+
+==를 사용하면 연산이 되기 전에 피연산자들을 먼저 비교할 수 있는 형태로 변환을 시키지만 ===은 형변환 x
+
+254 == '254'                // return true
+true == 1                   // return true
+undefined == null           // return true
+
+254 === '254'               // return false
+true === 1                  // return false
+undefined === null          // return false
+
+
 # JS 와 TS 차이점
 https://choseongho93.tistory.com/319
 

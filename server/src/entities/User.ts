@@ -1,6 +1,7 @@
 import { BaseEntity, BeforeInsert, Column, Entity, In,Index, OneToMany } from "typeorm";
 import {IsEmail, Length} from "class-validator";
 import bcrypt from 'bcryptjs';
+import Post from "./Post";
 
 //User 클래스가 Entity임을 나태내는 용도 
 //Database에서 CREATE TABLE user 에 해당함
