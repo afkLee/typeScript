@@ -28,18 +28,20 @@ ORM(Object Relational Mapping) 이란?
 Java Script 랑의 차이점
 
 TypeORM
-
+```
 const boards = Board.find({title:'Hello',status :'PUBLIC'})
+```
 
 JavaScript
 
+```
 db.query('SELECT * FROM boards WHERE title ="Hello" AND status = "PUBLIC", (err,result) => {
     if(err){
         throw new Error('Error')
     }
     boards = result.rows;
 })
-
+```
 특징 / 이점
 모델 기반, Database 테이블 체계 자동생성
 Database 개체 쉽게 삽입,업데이터,삭제 가능
@@ -53,17 +55,19 @@ Class Transformer 사용시 plain object를 class object로 변환가능, 그 �
 
 
 plain object 
+```
 {
     "id" : 1,
     "firstName" : "Lee",
     "lastName" : "EungJae",
     "age" : 25
 }
-
+```
 
 
 class object
 
+```
 import {Expose} from 'class-transformer';
 
 export class User{
@@ -82,9 +86,10 @@ export class User{
         return this.age;
     }
 }
+```
 
 class-transform 없을경우
-
+```
 fetch('users.json').then((users: User[]) => {
     return users.map(u => to FullName(u));
 })
@@ -92,18 +97,18 @@ fetch('users.json').then((users: User[]) => {
 export function toFullName(user){
     return `${user.firstName}${user.lastName}`
 }
-
+```
 함수를 만들어 map method 사용하여서 구현을 해야함
 
 
 class-transform 사용할경우
-
+```
 fetch('users.json').then((users: Object[]) => {
     const realUsers = plainToInstance(User, users);
 
     return realUsers.map(u => u.getName());
 })
-
+```
 plainToInstance : class-transform 의 method , class에서 정의한 로직 이용 가능 
 
 
