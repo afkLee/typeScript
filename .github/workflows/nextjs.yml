@@ -28,12 +28,21 @@ jobs:
         working-directory: ./client
       - run: yarn build
         working-directory: ./client
+      - run: npm run export
+        working-directory: ./client
+        env:
+          CI: true
+          DEPLOY_TARGET: gh-pages
+      - run: touch out/.nojekyll
+        working-directory: ./client
 
-      # - name: Deploy
-      #   uses: JamesIves/github-pages-deploy-action@3.7.1
-      #   with:
-      #     ssh-key: ${{ secrets.DEPLOY_KEY }}
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     BRANCH: gh-pages  # 배포될 브랜치
-      #     CLEAN: true # 배포 브랜치에 있는 파일들을 자동으로 삭제
+
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages  # 배포될 브랜치
+          CLEAN: true # 배포 브랜치에 있는 파일들을 자동으로 삭제
 
