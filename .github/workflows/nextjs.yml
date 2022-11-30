@@ -28,7 +28,7 @@ jobs:
         working-directory: ./client
       - run: yarn build
         working-directory: ./client
-      - run: npm run export
+      - run: yarn next export
         working-directory: ./client
         env:
           CI: true
