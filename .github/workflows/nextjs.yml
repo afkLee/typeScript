@@ -22,11 +22,11 @@ jobs:
           persist-credentials: false
 
       - name: Install and Build
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
       - run: npm install -g yarn
       - run: yarn add nextjs
         working-directory: ./client
-      - run: yarn start
+      - run: yarn build
         working-directory: ./client
       - run: yarn export
         working-directory: ./client
