@@ -18,7 +18,9 @@ jobs:
         with:
           persist-credentials: false
       - run: ls -al
-        uses: /typeScript/client
+      - name: Install and Build
+      - uses: /typeScript/client
+      - run: cd client
       - run: npm install
       - run: npm run build
         env:
