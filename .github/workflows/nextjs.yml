@@ -12,6 +12,8 @@ on:
 
 jobs:
   build-and-deploy:
+    env:
+        working-directory: ./client
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,7 +24,6 @@ jobs:
       - name: Install and Build
         uses: actions/setup-node@v1
       - run: npm install -g yarn
-      - run: cd ./client
       - run: yarn build
       - run: yarn export
         env:
