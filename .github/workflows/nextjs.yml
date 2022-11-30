@@ -22,6 +22,7 @@ jobs:
       - name: Install and Build
         uses: actions/setup-node@v1
       - run: npm install -g yarn
+      - run: cd ./client
       - run: yarn build
       - run: yarn export
         env:
