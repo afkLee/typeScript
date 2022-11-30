@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
 
@@ -30,10 +30,11 @@ jobs:
         working-directory: ./client
 
       - name: Deploy
-        uses: afkLee/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@4
         with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages  # 배포될 브랜치
-          FOLDER: out # 이 폴더에 있는 파일을 배포
+          FOLDER: builds # 이 폴더에 있는 파일을 배포
           CLEAN: true # 배포 브랜치에 있는 파일들을 자동으로 삭제
 
