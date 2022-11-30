@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2.3.1
         with:
           persist-credentials: false
 
       - name: Install and Build
-        uses: actions/setup-node@v3
+        uses: JamesIves/github-pages-deploy-action@3.7.1
       - run: cd client
       - run: npm install
       - run: npm run build
@@ -29,7 +29,7 @@ jobs:
       - run: touch out/.nojekyll
 
       - name: Deploy
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages  # 배포될 브랜치
