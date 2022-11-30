@@ -28,6 +28,8 @@ jobs:
         working-directory: ./client
       - run: yarn build
         working-directory: ./client
+      - run: yarn start
+        working-directory: ./client
       - run: yarn next export
         working-directory: ./client
         env:
