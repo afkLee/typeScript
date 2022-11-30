@@ -17,10 +17,17 @@ jobs:
         uses: actions/checkout@v2.3.1
         with:
           persist-credentials: false
-
       - name: Install and Build
         uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages  # 배포될 브랜치
+          FOLDER: out # 이 폴더에 있는 파일을 배포
+          CLEAN: false # 배포 브랜치에 있는 파일들을 자동으로 삭제
+
       - run: cd client
+      - run: npm ci
+      - run: npm run build --if-present
       - run: npm install
       - run: npm run build
         env:
@@ -29,9 +36,3 @@ jobs:
       - run: touch out/.nojekyll
 
       - name: Deploy
-        uses: actions/deploy-pages@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages  # 배포될 브랜치
-          FOLDER: out # 이 폴더에 있는 파일을 배포
-          CLEAN: false # 배포 브랜치에 있는 파일들을 자동으로 삭제
