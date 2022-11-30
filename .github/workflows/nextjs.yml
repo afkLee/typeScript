@@ -20,9 +20,9 @@ jobs:
 
       - name: Install and Build
         uses: actions/setup-node@v1
+      - run: cd client
       - run: npm install
       - run: npm run build
-      - run: npm run export
         env:
           CI: true
           DEPLOY_TARGET: gh-pages
