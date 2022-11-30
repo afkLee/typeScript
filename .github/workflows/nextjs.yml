@@ -28,12 +28,7 @@ jobs:
         working-directory: ./client
       - run: yarn build
         working-directory: ./client
-      - run: yarn export
-        working-directory: ./client
-        env:
-          CI: true
-          DEPLOY_TARGET: gh-pages
-      - run: touch out/.nojekyll
+
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
