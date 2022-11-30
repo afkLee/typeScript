@@ -7,7 +7,9 @@
       "start": "ts-node src/index.ts",
       "dev": "nodemon --exec ts-node ./src/server.ts",
       "test": "echo \"Error: no test specified\" && exit 1",
-      "typeorm": "typeorm-ts-node-commonjs"
+      "typeorm": "typeorm-ts-node-commonjs",
+      "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages"
+
    },
    "author": "",
    "license": "ISC",
