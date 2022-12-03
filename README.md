@@ -13,6 +13,27 @@ Client Side Rendering 하면 첫페이지에 빈 HTML 가져와 JS 파일 해석
 
 Next.Js로 구성시 Pre-Rendering 통해 페이지 미리 렌더링 , 완성된 HTML 가져오기에 검색엔진 크롤러 에게 Rendering 된 페이지를 전달
 
+# JavaScript Reduce()
+reduce Method
+
+예시
+```
+const array1 = [1,2,3,4];
+
+//0~4까지 다 더하는경우
+const initialValue =0;
+const sum = array1.reduce((previousValue,currentValue) => previousValue + currentValue , initialValue);
+
+console.log(sumWithInitial);
+// 10 출력
+```
+1. 처음 initialValue => 0이니 previousValue 0이며 currentValue는 1 임 // 0+1 => 1
+2. previousValue 는 1이며 currentValue는 2 // 1+2 => 3
+3. previousValue 는 3이며 currentValue는 3 // 3+3 => 6
+4. previousValue 는 6이며 currentValue는 4 // 6+4 => 10
+
+결과는 10
+
 
 
 
