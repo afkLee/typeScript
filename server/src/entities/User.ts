@@ -3,6 +3,8 @@ import {IsEmail, Length} from "class-validator";
 import bcrypt from 'bcryptjs';
 import Post from "./Post";
 import BaseEntity from './Entity';
+import { Exclude } from "class-transformer";
+import Vote from "./Vote";
 
 //User 클래스가 Entity임을 나태내는 용도 
 //Database에서 CREATE TABLE user 에 해당함
@@ -27,7 +29,7 @@ export default class User extends BaseEntity{
 
     @Exclude()
     @Column()
-    @Length(6,30,{ massage : "비밀번호는 6자리 이상이여야합니다."})
+    @Length(6,30,{ message:"비밀번호는 6자리 이상이여야합니다."})
     password: string;
 
 
@@ -35,7 +37,7 @@ export default class User extends BaseEntity{
     posts: Post[];
 
     @OneToMany(() =>Vote,(vote) => vote.user)
-    posts: Vote[];
+    post: Vote[];
 
     @BeforeInsert()
     async hashPassword(){

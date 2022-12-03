@@ -22,6 +22,9 @@ export default class Vote extends BaseEntity{
 
     @Column({nullable:true})
     postId: string;
+    
+    @ManyToOne(() => Post)
+    post:Post;
 
     @Column({nullable:true})
     commentId: number;
