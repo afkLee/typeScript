@@ -5,11 +5,11 @@ import BaseEntity from './Entity';
 import {Exclude, Expose} from 'class-transformer';
 import Post from "./Post";
 import Vote from "./Vote";
-import { useReducer } from "react";
+import { makeId } from "../utils/helpers";
 
 
 @Entity("comments")
-class Comment extends BaseEntity{
+export default abstract class Comment extends BaseEntity{
     @Index()
     @Column()
     identifier: string;

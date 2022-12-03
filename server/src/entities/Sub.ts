@@ -1,8 +1,9 @@
 import { extname } from "path";
-import { Column, Entity, Index, JoinColumn, OneToMany } from "typeorm";
+import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import User from "./User";
 import {Expose} from 'class-transformer';
 import BaseEntity from './Entity';
+import Post from "./Post";
 
 
 @Entity("subs")
@@ -42,7 +43,7 @@ export default class Sub extends BaseEntity{
     user: User;
 
 
-    @OneToMany(() => Post , (post) => post.sub)
+    @OneToMany(() => Post,(post) => post.sub)
     post : Post[]
 
 
